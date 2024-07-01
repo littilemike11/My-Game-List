@@ -14,17 +14,17 @@ export default function Tabs(){
                     {/* add review */}
                     <CreateReview/>
                 </div>
-                    <div className="bg-white">
-                        <div className="bg-black mx-auto max-w-7xl px-6 lg:px-8">
-                            <div className="grid mx-auto mt-10 max-w-2xl  gap-x-8 gap-y-16 border-t border-gray-200 pt-10  ">
-                              {reviews.map((review) => (
-                                <Review key ={review.id}
-                                props={review}
-                                />
-                                ))}
-                            </div>
+                {/*<div className="bg-white">
+                    <div className="bg-black mx-auto max-w-7xl px-6 lg:px-8">
+                        <div className="grid mx-auto mt-10 max-w-2xl  gap-x-8 gap-y-16 border-t border-gray-200 pt-10  ">
+                          {reviews.map((review) => (
+                            <Review key ={review.id}
+                            props={review}
+                            />
+                            ))}
                         </div>
                     </div>
+                </div> */}
                     <Review/>
                     </div>
 

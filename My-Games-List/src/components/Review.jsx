@@ -13,7 +13,6 @@ export default function Review(){
     // how to add comment
     // how to create new html pages?
     // add to github/submit
-    // like/dislike buttons r connected for multiple reviews
 
     // add createReview component
     
@@ -21,20 +20,17 @@ export default function Review(){
     /*
     create a toggle function that takes a function and parameter and flips its parameter
     */
-    // const [sport, setSport] = useState(false);
-    // sport = false
-    // console.log(!sport)
-    // setSport(!sport)
-
     const toggle = (toggleFunction, variable) =>{
       toggleFunction(!variable) 
     }
 
     return(
         <>
-        
-          {reviews.map((review,index) => (
-                  <article key={review.id} className="bg-white p-10 border-gray-200 flex max-w-xl flex-col items-start justify-between">   
+          <div className="bg-white">
+            <div className="bg-black mx-auto max-w-7xl px-6 lg:px-8">
+                <div className="grid mx-auto mt-10 max-w-2xl  gap-x-8 gap-y-16 border-t border-gray-200 pt-10  ">
+                {reviews.map((review) => (
+                  <article key={review.id} className="border-gray-200 flex max-w-xl flex-col items-start justify-between">   
                     <div className=" flex items-center gap-x-4 text-xs">
                     {/* profile ui */}
                     <div className=" relative mt-8 flex items-center gap-x-4">
@@ -100,7 +96,7 @@ export default function Review(){
                       <div className="flex align-center">
                         <button onClick={()=>{
                             toggle(setComment,comment)
-                            if(comment){}
+                            console.log(comment)
                           }
                         }
                           >Add Comment +</button>
@@ -110,7 +106,9 @@ export default function Review(){
                     <Comment state = {comment}/>
                   </article>
                 ))}
-              
+              </div>
+            </div>
+          </div>
         </>
     )
 }
