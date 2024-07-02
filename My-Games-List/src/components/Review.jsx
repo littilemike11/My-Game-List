@@ -103,7 +103,7 @@ export default function Review(){
                         </div>
                     </div>
                     {/* add comment section*/ }
-                    <Comment state = {comment}/>
+                    <Comment />
                   </article>
                 ))}
               </div>
