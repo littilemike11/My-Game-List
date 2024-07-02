@@ -21,3 +21,23 @@ cd My-Games-List
 ```
 npm install
 ```
+
+## How it Works
+
+### Big Idea
+
+A review site for games. Users can create account to post reviews or questions about games. Also be able to see game information. Users can respond to other users' reviews or discussions
+
+### Completed Features
+
+- static main page ui
+- static review tag
+- static create review pg modal
+- likes and dislikes functionality for review posts using `useState`
+
+### Next Steps
+
+- implement discussion tab
+- implement sign up/ login pg
+- import api to get game data
+- review functionality for creating / storing review posts
