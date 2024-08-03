@@ -22,6 +22,18 @@ router.get("/posts/:id", async (req, res) => {
     res.status(400).send(error);
   }
 });
+
+// get all posts that exist
+router.get("/posts", async (req, res) => {
+  try {
+    const posts = await Post.find();
+    res.status(200).send(posts);
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
+  }
+});
+
 // get all posts from a specific user
 // idk if this should be in posts or user
 router.get("/postsFrom/:uid", async (req, res) => {

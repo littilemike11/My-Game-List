@@ -10,7 +10,7 @@ export default function Tabs() {
     //get reviews
     const fetchReviews = async () => {
         const response = await getReviews()
-        setReviews(response.data.posts)
+        setReviews(response.data)
         console.log(response.data)
     }
     //fetch reviews on awake
@@ -29,7 +29,14 @@ export default function Tabs() {
                             <CreateReview />
                         </div>
                         <ul>
-
+                            {
+                                reviews.map((review, index) => (
+                                    <Review
+                                        key={index}
+                                        content={review.content}
+                                    />
+                                ))
+                            }
                         </ul>
                         <Review />
                     </div>

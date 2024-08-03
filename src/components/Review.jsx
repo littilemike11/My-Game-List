@@ -3,7 +3,7 @@ import { useState } from "react";
 import Comment from "./Comment";
 import reviews from "../reviews";
 import CreateReview from "./CreateReview";
-export default function Review() {
+export default function Review(props) {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
   const [comment, setComment] = useState(false);
@@ -63,7 +63,7 @@ export default function Review() {
                       {review.title}
                     </a>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{review.description}</p>
+                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{props.content}</p>
                 </div>
                 {/* review stats */}
                 <div className="flex justify-between  w-full" >
