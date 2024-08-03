@@ -1,4 +1,4 @@
-export default function CreateReview() {
+export default function CreateReview(props) {
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method, can be closed using ID.close() method */}
