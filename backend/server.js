@@ -1,13 +1,14 @@
-const mongoose = require("mongoose");
-const express = require("express");
+import mongoose from "mongoose";
+import express from "express";
 const app = express();
-const userRouter = require("./routes/userRoutes");
-const postRouter = require("./routes/postRouter");
+import userRouter from "./routes/userRoutes.js";
+import postRouter from "./routes/postRouter.js";
+import cors from "cors";
 
 const PORT = 3000;
 
 app.use(express.json());
-
+app.use(cors());
 app.use("/api/v1", userRouter);
 app.use("/api/v1", postRouter);
 

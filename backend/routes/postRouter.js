@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const Post = require("../models/postModel");
-const User = require("../models/userModel");
+import Post from "../models/postModel.js";
+import User from "../models/userModel.js";
 //get a specific post
 router.get("/posts/:id", async (req, res) => {
   try {
@@ -77,4 +77,4 @@ router.post("/posts", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
