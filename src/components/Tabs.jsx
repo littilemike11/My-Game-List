@@ -11,7 +11,6 @@ export default function Tabs() {
     const fetchReviews = async () => {
         const response = await getReviews()
         setReviews(response.data)
-        console.log(response.data)
     }
     //fetch reviews on awake
     useEffect(() => {
