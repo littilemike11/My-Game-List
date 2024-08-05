@@ -93,6 +93,38 @@ router.post("/posts", async (req, res) => {
 });
 
 //update a post
+router.put("/posts/:id", async(req,res)=>{
+  try{
+    const id = req.params.id;
+    const {content} = req.body
+    let foundPost = await Post.findByIdAndUpdate(id,{content:content},{new:true})
+    if(!foundPost){
+      res.status(404).send("Post not Found")
+    }else{
+      res.status(200).send(foundPost)
+    }
+
+  }catch(error){
+    console.log(error)
+    res.status(400).send(error)
+  }
+})
+
 
 //delete a post
+// should the comments belonging to that post also be deleted 
+router.delete("/posts/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    let foundPost = await Post.findByIdAndDelete(id);
+    if (!foundPost) {
+      res.status(404).send("Post not found");
+    } else {
+      res.status(200).send("Post deleted successfully");
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error);
+  }
+});
 export default router;

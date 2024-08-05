@@ -120,8 +120,8 @@ router.get("/reviews", async (req,res)=>{
 router.put("/reviews/:id", async(req,res)=>{
   try{
     const id = req.params.id;
-    const {content,score,title,gameID} = req.body
-    let foundReview = await Review.findByIdAndUpdate(id,{content,score,title,gameID})
+    const {content,score,title} = req.body
+    let foundReview = await Review.findByIdAndUpdate(id,{content:content,score:score,title:title},{new:true})
     if(!foundReview){
       res.status(404).send("Review not Found")
     }else{
@@ -135,6 +135,8 @@ router.put("/reviews/:id", async(req,res)=>{
 })
 
 //delete review by id
+// should the comments belonging to that post also be deleted 
+
 router.delete("/reviews/:id",async(req,res)=>{
   try{
     const id = req.params.id;
