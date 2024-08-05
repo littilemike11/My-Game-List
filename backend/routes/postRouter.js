@@ -36,7 +36,7 @@ router.get("/posts", async (req, res) => {
 
 // get all posts from a specific user
 // idk if this should be in posts or user
-router.get("/postsFrom/:uid", async (req, res) => {
+router.get("/posts/fromUser/:uid", async (req, res) => {
   try {
     const uid = req.params.uid;
 
@@ -49,8 +49,11 @@ router.get("/postsFrom/:uid", async (req, res) => {
     if (!foundUser) {
       res.status(404).send("User not found");
     }
-    const posts = foundUser.posts;
+    else{
+      const posts = foundUser.posts;
     res.status(200).send(posts);
+    }
+    
   } catch (error) {
     console.log(error);
     res.status(400).send(error);
@@ -89,4 +92,7 @@ router.post("/posts", async (req, res) => {
   }
 });
 
+//update a post
+
+//delete a post
 export default router;
