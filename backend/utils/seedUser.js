@@ -53,6 +53,7 @@ const testUsers = [
   },
 ];
 
+// promise != string?
 async function hashPassword(password) {
   let hashedPassword = await bcrypt.hash(password, 10);
   console.log(hashedPassword);
