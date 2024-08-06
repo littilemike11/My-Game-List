@@ -3,6 +3,7 @@ import User from "../models/userModel.js";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import dotenv from "dotenv";
+import bcrypt from "bcrypt";
 
 const currentFileUrl = import.meta.url;
 const currentDir = dirname(fileURLToPath(currentFileUrl));
@@ -52,6 +53,11 @@ const testUsers = [
   },
 ];
 
+async function hashPassword(password) {
+  let hashedPassword = await bcrypt.hash(password, 10);
+  console.log(hashedPassword);
+  return hashedPassword;
+}
 // Seed the database with starter data
 async function seedData() {
   try {
