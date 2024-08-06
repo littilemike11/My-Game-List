@@ -19,10 +19,12 @@ const userSchema = new mongoose.Schema({
       ref: "Post",
     },
   ],
-  reviews:[{
-    type:mongoose.Schema.type.ObjectId,
-    ref: "Review",
-  }]
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 const User = mongoose.model("User", userSchema);
 
