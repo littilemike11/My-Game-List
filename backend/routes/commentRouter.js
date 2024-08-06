@@ -1,6 +1,6 @@
 import express from "express";
-import Post from "../models/postModel";
-import Review from "../models/reviewModel";
+import Post from "../models/postModel.js";
+import Review from "../models/reviewModel.js";
 const router = express.Router();
 
 // get all comments from a specific objid
@@ -12,7 +12,6 @@ router.get("/comments/fromParent/:pid", async (req, res) => {
     //ie . a the thread of discussion
     const allComments = await Comment.find({ parentID: pid });
     res.status(200).send(allComments);
-
   } catch (error) {
     console.log(error);
     res.status(400).send(error);
@@ -21,8 +20,8 @@ router.get("/comments/fromParent/:pid", async (req, res) => {
 
 // get all specific comment from id
 //props wont need
-router.get("/comments/:id", async (req,res)=>{
-  try{
+router.get("/comments/:id", async (req, res) => {
+  try {
     const id = req.params.id;
 
     //get post from db
@@ -34,15 +33,15 @@ router.get("/comments/:id", async (req,res)=>{
       //otherwise send post
       res.status(200).send(comment);
     }
-  }catch(error){
-    console.log(error)
-    res.status(400).send(error)
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
   }
-})
+});
 // post comment
 router.post("/comments", async (req, res) => {
   try {
-    const { userID, parentType,parentID, content } = req.body;
+    const { userID, parentType, parentID, content } = req.body;
 
     //is it good/ efficient to have these checks when in ui these errors shouldnt be possible
     // check if user exists
@@ -52,17 +51,17 @@ router.post("/comments", async (req, res) => {
     }
     //check if game exits
     //
-    let parent = parentType==="Post" ? Post : Review
+    let parent = parentType === "Post" ? Post : Review;
     const foundParent = await parent.findById(parentID);
     if (!foundParent) {
       res.status(404).send("Game Does Not Exist");
     }
     //create new comment
-    const newComment = new Comment({userID, parentID, content, parentType});
+    const newComment = new Comment({ userID, parentID, content, parentType });
     //save comment to mongo db
-    await newComment.save()
+    await newComment.save();
     // send new comment as response
-    res.status(201).send(newComment)
+    res.status(201).send(newComment);
 
     // update user comments collection
     foundUser.reviews.push(newComment);
@@ -77,23 +76,26 @@ router.post("/comments", async (req, res) => {
   }
 });
 // update comment
-router.put("/comments/:id", async(req,res)=>{
-  try{
+router.put("/comments/:id", async (req, res) => {
+  try {
     const id = req.params.id;
     //should only be able to edit content of comment
-    const {content} = req.body
-    let foundComment = await Comment.findByIdAndUpdate(id,{content:content},{new:true})
-    if(!foundComment){
-      res.status(404).send("Comment not Found")
-    }else{
-      res.status(200).send(foundComment)
+    const { content } = req.body;
+    let foundComment = await Comment.findByIdAndUpdate(
+      id,
+      { content: content },
+      { new: true }
+    );
+    if (!foundComment) {
+      res.status(404).send("Comment not Found");
+    } else {
+      res.status(200).send(foundComment);
     }
-
-  }catch(error){
-    console.log(error)
-    res.status(400).send(error)
+  } catch (error) {
+    console.log(error);
+    res.status(400).send(error);
   }
-})
+});
 
 //delete comment
 //where does authentication happen here on frontend?
@@ -113,3 +115,4 @@ router.delete("/comments/:id", async (req, res) => {
   }
 });
 
+export default router;
