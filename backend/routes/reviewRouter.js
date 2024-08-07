@@ -5,7 +5,7 @@ import Review from "../models/reviewModel.js";
 // import Game from "../models/gameModel"
 
 //create a review
-router.post("reviews", async (req, res) => {
+router.post("/reviews", async (req, res) => {
   try {
     const { userID, gameID, content, score, title } = req.body;
 
@@ -16,10 +16,10 @@ router.post("reviews", async (req, res) => {
       res.status(404).send("User not Found");
     }
     //check if game exits
-    const foundGame = await Game.findById(gameID);
-    if (!foundGame) {
-      res.status(404).send("Game Does Not Exist");
-    }
+    // const foundGame = await Game.findById(gameID);
+    // if (!foundGame) {
+    //   res.status(404).send("Game Does Not Exist");
+    // }
 
     //create new review
     const newReview = new Review({ userID, gameID, content, score, title });
@@ -33,8 +33,8 @@ router.post("reviews", async (req, res) => {
     await foundUser.save();
 
     // update game reviews collection
-    foundGame.reviews.push(newReview);
-    await foundGame.save();
+    // foundGame.reviews.push(newReview);
+    // await foundGame.save();
   } catch (error) {
     console.log(error);
     res.status(400).send(error);
@@ -106,7 +106,7 @@ router.get("/reviews/fromUser/:uid", async (req, res) => {
 //get all reviews that exist
 router.get("/reviews", async (req, res) => {
   try {
-    let reviews = await Review.find();
+    let reviews = await Review.find().populate("userID", "username");
     res.status(200).send(reviews);
   } catch (error) {
     console.log(error);

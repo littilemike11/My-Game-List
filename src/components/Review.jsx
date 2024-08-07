@@ -39,7 +39,7 @@ export default function Review(props) {
                       <p className="font-semibold text-gray-900">
                         <a href={review.author.href}>
                           <span className="absolute inset-0" />
-                          {review.author.name}
+                          {props.username}
                         </a>
                       </p>
                       <p className="text-gray-600">{review.author.role}</p>
@@ -60,7 +60,7 @@ export default function Review(props) {
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                     <a href={review.href}>
                       <span className="absolute inset-0" />
-                      {review.title}
+                      {props.title}
                     </a>
                   </h3>
                   <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{props.content}</p>

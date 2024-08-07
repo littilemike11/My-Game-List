@@ -4,7 +4,8 @@ const API_URL = "http://localhost:3000/api/v1";
 //get reviews
 export const getReviews = () => axios.get(`${API_URL}/reviews`);
 export const getReviewById = (id) => axios.get(`${API_URL}/reviews/${id}`);
-export const createReview = (review) => axios.post(`${API_URL}/`, review);
+export const createReview = (review) =>
+  axios.post(`${API_URL}/reviews`, review);
 export const updateReview = (id, review) =>
   axios.put(`${API_URL}/reviews/${id}`, review);
 export const deleteReview = (id) => axios.delete(`${API_URL}/reviews/${id}`);

@@ -1,4 +1,17 @@
+import { useState } from "react"
+import { createReview } from "../services/api"
 export default function CreateReview(props) {
+  const [newReview, setNewReview] = useState({
+    userID: "66b175a3628fc91408892e6a", //firefly42
+    score: 3.5,
+    content: "funniest game ever",
+    title: "I love HellDivers 2",
+    gameID: "Helldivers 2",
+  })
+  async function submitReview() {
+    await props.handleCreateReview()
+    document.getElementById('my_modal_3').close()
+  }
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method, can be closed using ID.close() method */}
@@ -44,7 +57,7 @@ export default function CreateReview(props) {
             <textarea className="input input-bordered w-full max-w-xs" ></textarea>
           </label>
           <div className="flex justify-end">
-            <button onClick={() => document.getElementById('my_modal_3').close()}>Create Review</button>
+            <button onClick={submitReview}>Create Review</button>
           </div>
         </div>
       </dialog>

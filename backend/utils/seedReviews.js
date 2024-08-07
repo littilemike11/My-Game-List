@@ -39,8 +39,8 @@ const testReviews = [
   },
   {
     userID: "66b175a3628fc91408892e6b", //cryptoNinja
-    content: "Halo 5",
-    gameID: "I hate this game",
+    content: "I hate this game",
+    gameID: "Halo 5",
     score: 1,
     title: "Halo 5 a masterpiece?",
   },
