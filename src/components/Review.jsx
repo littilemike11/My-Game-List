@@ -27,7 +27,7 @@ export default function Review(props) {
   return (
     <>
       <div className="bg-white">
-        <div className="bg-black mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="bg-base-100 mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid mx-auto mt-10 max-w-2xl  gap-x-8 gap-y-16 border-t border-gray-200 pt-10  ">
             {reviews.map((review) => (
               <article key={review.id} className="border-gray-200 flex max-w-xl flex-col items-start justify-between">
